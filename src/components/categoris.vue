@@ -4,13 +4,13 @@
         <div class="d-sm-block d-md-none">
             <div class="category-list">
                 <div class="category-item item-color-1">
-                    <h2>Events UAI</h2>
+                   <a href="/eventsuai"><h2>Events UAI</h2></a> 
                 </div>
                 <div class="category-item item-color-2">
-                    <h2>Events ORMAWA</h2>
+                   <a href="/eventsormawa"><h2>Events ORMAWA</h2></a> 
                 </div>
                 <div class="category-item item-color-3">
-                    <h2>Events UKKM</h2>
+                   <a href="/eventukkm"><h2>Events UKKM</h2></a> 
                 </div>
             </div>
         </div>

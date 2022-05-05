@@ -17,7 +17,7 @@
         <div class="d-none d-md-block">
             <div class="category-list-dk">
                 <div class="category-item-dk item-color-1">
-                    <div><img src="../assets/images/categoryimages.png" alt=""></div>
+                   <a href="/eventsuai"><div><img src="../assets/images/categoryimages.png" alt=""></div></a> 
                     <h2>Events UAI</h2>
                 </div>
                 <div class="category-item-dk item-color-2">

@@ -1,0 +1,219 @@
+<template>
+  <div class="form-input" v-on:submit.prevent>
+    <div>
+     <div
+      class="form-check form-check-inline"
+      v-for="lembaga in lembagas"
+      :key="lembaga.LembagaId"
+    >
+      <input
+        class="form-check-input"
+        type="radio"
+        name="lembaga"
+        id="inlineRadio2"
+        :value="lembaga.LembagaId"
+        v-model="event.lembagaId"
+      />
+      <label class="form-check-label" for="inlineRadio2">{{lembaga.lembagaName}}</label>
+    </div>
+  </div> 
+  <div>
+    <div
+      class="form-check form-check-inline"
+      v-for="category in categorys"
+      :key="category.CategoryId"
+    >
+      <input
+        class="form-check-input"
+        type="radio"
+        name="category"
+        id="inlineRadio2"
+        :value="category.CategoryId"
+        v-model="event.CategoryId"
+      />
+      <label class="form-check-label" for="inlineRadio2">{{
+        category.categoryName
+      }}</label>
+    </div>
+  </div>
+  <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Nama Lembaga</label>
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="Contoh: MILAD NASYAAT UAI"
+        v-model="event.lembagaName"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput" class="form-label">Nama Event</label>
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput"
+        placeholder="Contoh: MILAD NASYAAT UAI"
+        v-model="event.nameEvent"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Tempat</label>
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="Contoh: Auditorium Arifin Panigoro"
+        v-model="event.tempat"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label"
+        >Tanggal</label
+      >
+      <input
+        type="date"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="www.form.com"
+        v-model="event.tanggal"
+      />
+    </div>
+      <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label"
+        >Waktu</label
+      >
+      <input
+        type="time"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="www.form.com"
+        v-model="event.waktu"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label"
+        >Link Pendaftaran</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="www.form.com"
+        v-model="event.link_pendaftaran"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label">Poster</label>
+      <input
+        type="file"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="www.image.com"
+        @change="onImageselect"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="formGroupExampleInput2" class="form-label"
+        >Link Instagram</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        id="formGroupExampleInput2"
+        placeholder="www.instagram/nasyaat.com"
+        v-model="event.link_instagram"
+      />
+    </div>
+    <div class="form-floating">
+      <label for="floatingTextarea2">Deskripsi</label>
+      <textarea
+        class="form-control"
+        placeholder=""
+        id="floatingTextarea2"
+        style="height: 100px"
+        v-model="event.deskripsi"
+      ></textarea>
+    </div>
+    <button type="button" class="btn btn-primary" @click="events">Simpan</button>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+  name: "input-post",
+
+  data() {
+    return {
+      Image:null,
+      categorys: {},
+      lembagas:{},
+      
+      event: {
+           lembagaId:null,
+           CategoryId:null,
+           nameEvent:null,
+           lembagaName:null,
+           link_pendaftaran:null,
+           link_instagram:null,
+           tanggal:null,
+           waktu:null,
+           tempat:null,
+           deskripsi:null,
+          
+          
+        
+      },
+    };
+  },
+  methods: {
+    setLembaga(data){
+      this.lembagas=data;
+    },
+     setCategory(data) {
+      this.categorys = data;
+    },
+    onImageselect(image){
+      this.Image= image.target.files[0]
+    },
+    events(e) {
+      let fd = new FormData();
+      fd.append('Image', this.Image);
+      fd.append('lembagaId', this.event.lembagaId)
+      fd.append('CategoryId', this.event.CategoryId)
+      fd.append('nameEvent', this.event.nameEvent)
+      fd.append('lembagaName', this.event.lembagaName)
+      fd.append('link_pendaftaran', this.event.link_pendaftaran)
+      fd.append('link_instagram', this.event.link_instagram)
+      fd.append('tanggal', this.event.tanggal)
+      fd.append('waktu', this.event.waktu)
+      fd.append('tempat', this.event.tempat)
+      fd.append('deskripsi', this.event.deskripsi)
+      
+      axios.post("http://localhost:3000/events", fd,  {
+              headers: {
+                  "Content-Type": "multipart/form-data",
+        },
+      })
+      console.warn(this.event)
+      e.preventDefault();
+    }
+  },
+  mounted(){
+    axios
+    .get("http://localhost:3000/lembaga")
+    .then((response)=> this.setLembaga(response.data))
+    .catch((error)=> console.log(error));
+    
+     axios
+      .get("http://localhost:3000/category")
+      .then((response) => this.setCategory(response.data))
+      .catch((error) => console.log(error));
+  }
+  
+  
+};
+</script>
+
+<style>
+</style>

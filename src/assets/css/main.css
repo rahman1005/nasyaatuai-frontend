@@ -173,6 +173,145 @@ nav {
 .fitur-item-dk p{
     padding-top: 30px;
 }
+
+.button-logout{
+    border: none;
+    background-color: white;
+    color: #082A5A;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .button-logout:hover{
+    color: #2276B4;
+  }
+  /* style dashborad dan form */
+  .form{
+    width: 70%;
+    margin: 50px auto;
+  }
+  .list{
+    width: 70%;
+    margin: 50px auto;
+  }
+  .form h1 {
+    color: #082A5A;
+    font-weight: bold;
+    text-align: center;
+  }
+  .tambah-event {
+    width: 170px;
+    height: 40px;
+    background-color: #082A5A;
+    border-radius: 10px;
+   
+  }
+  .tambah-event h1{
+    font-size: 17px;
+    text-align: center;
+    padding-top: 10px;
+    font-weight: bold;
+  }
+  .list a{
+    text-decoration: none;
+    color: white;
+  }
+  
+  .list-item{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: #C4C4C4;
+    margin-top: 20px  ;
+    color: #082A5A;
+    height: 70px;
+   
+  }
+  .action {
+    text-align: right;
+    padding: 15px 30px 0px 0px;
+    font-size: 30px;
+    font-weight: bold;
+    
+  }
+  .judul {
+    padding: 15px 0px 0px 30px;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .list-item-event{
+    display: grid;
+    grid-template-columns: 6fr 1fr 1fr;
+    background-color: #eaeaea;
+    margin-top: 5px  ;
+    color: #082A5A;
+    height: 70px;
+  }
+  .judul-event{
+    font-size: 25px;
+    padding: 15px 0px 0px 30px;
+    color: black;
+    
+  }
+  .btn{
+    height: 40px;
+    width: 120px;
+    margin-top:15px;
+    border-radius: 10px;
+  }
+  .color-edit{
+    background-color: #F2D114;
+  }
+  .color-delete{
+    background-color: #F22F14;
+  }
+  .text-action{
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+  }
+  .button-lembaga{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 30%;
+  }
+/* card style */
+.Card{
+  margin: 0 auto;
+  width: 80%;
+}
+.card-list{
+display: grid;
+grid-template-columns: 1fr 1fr;
+}
+.card{
+margin-bottom: 20px;
+height: 650px;
+box-sizing: border-box;
+}
+.card img{
+max-height: 400px;
+min-height: 399px;
+width: 100%;
+object-fit: cover;
+object-position: center;
+}
+.card-title{
+font-weight: bold;
+}
+.list-group-item{
+height: 60px;
+}
+.card-body{
+height: 200px;
+color: black;
+}
+
+/* all events */
+.All-Events h1{
+  text-align: center;
+  margin-top: 40px;
+  color: #082A5A;
+}
+
 @media screen and (min-width: 700px){
     .Hero {
         display: grid;

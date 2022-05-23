@@ -6,7 +6,10 @@ import AllEvents from '../views/AllEvents.vue'
 import EventsUai from '../views/EventsUai.vue'
 import EventsOrmawa from '../views/EventsOrmawa.vue'
 import EventsUKKM from '../views/EventsUKKM.vue'
-
+import Dashboardview from '../views/Dashboard.vue'
+import inputPostView from '../views/inputPost.vue'
+import postLembaga from '../views/post-lembaga.vue'
+import detailEvent from '../views/eventdetail.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -39,7 +42,27 @@ const routes = [
     path: '/eventukkm',
     name: 'eventsukkm',
     component:EventsUKKM
-  }
+  },
+  {
+    path:'/dashboard',
+    name: 'dashboard',
+    component:Dashboardview
+  },
+  {
+    path:'/inputpost',
+    name: 'inputpost',
+    component:inputPostView
+  },
+  {
+    path:'/postlembaga',
+    name: 'postlembaga',
+    component:postLembaga
+  },
+  {
+    path:'/detailevent',
+    name: 'detailevent',
+    component:detailEvent
+  },
 
 ]
 

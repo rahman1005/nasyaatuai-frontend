@@ -10,6 +10,8 @@ import Dashboardview from '../views/Dashboard.vue'
 import inputPostView from '../views/inputPost.vue'
 import postLembaga from '../views/post-lembaga.vue'
 import detailEvent from '../views/eventdetail.vue'
+import formput from '../views/fromPutLembaga.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,9 +61,14 @@ const routes = [
     component:postLembaga
   },
   {
-    path:'/detailevent/eventId',
+    path:'/detailevent/:eventId',
     name: 'detailevent',
     component:detailEvent
+  },
+  {
+    path:'/putevent/:eventId',
+    name: 'putevent',
+    component:formput
   },
 
 ]

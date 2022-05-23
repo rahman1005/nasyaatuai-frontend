@@ -6,7 +6,7 @@
       alt="Card image cap"
     />
     <div class="card-body">
-      <h5 class="card-title"> <router-link :to="'/detailevent/' +event.eventId">{{event.nameEvent}}</router-link></h5>
+      <h5 class="card-title"> <router-link class="routerlink" :to="'/detailevent/' +event.eventId">{{event.nameEvent}}</router-link></h5>
       <p class="card-text">
         Penyelenggara :
         {{event.lembagaName}}

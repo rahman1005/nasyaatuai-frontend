@@ -12,6 +12,7 @@
         id="inlineRadio2"
         :value="category.CategoryId"
         v-model="lembaga.categoryId"
+        required
       />
       <label class="form-check-label" for="inlineRadio2">{{
         category.categoryName
@@ -27,6 +28,7 @@
         id="formGroupExampleInput"
         placeholder="Contoh: MILAD NASYAAT UAI"
         v-model="lembaga.lembagaName"
+        required
       />
     </div>
     <!-- <div class="mb-3">
@@ -52,6 +54,7 @@
         id="formGroupExampleInput2"
         placeholder="www.form.com"
         v-model="lembaga.emailLembaga"
+        required
       />
     </div>
     <div class="mb-3">
@@ -62,6 +65,7 @@
         id="formGroupExampleInput2"
         placeholder="www.form.com"
         v-model="lembaga.password"
+        required
       />
     </div>
     <button type="button" class="btn btn-primary" @click="lembagas">
@@ -92,7 +96,14 @@ export default {
     },
 
     lembagas(e) {
+      if(this.lembaga.lembagaName &&
+      this.lembaga.categoryId &&
+      this.lembaga.emailLembaga &&
+      this.lembaga.password !=null){
       axios.post("http://localhost:3000/lembaga",this.lembaga);
+      } else{
+        alert("data tdak boleh kosong")
+    }
       console.warn(this.lembaga);
       e.preventDefault();
     },

@@ -1,45 +1,5 @@
 <template>
-  <div class="form-input" v-on:submit.prevent>
-    <div>
-     <div
-      class="form-check form-check-inline"
-      v-for="lembaga in lembagas"
-      :key="lembaga.LembagaId"
-    >
-      <input
-        class="form-check-input"
-        type="radio"
-        name="lembaga"
-        id="inlineRadio2"
-        :value="lembaga.LembagaId"
-        v-model="event.lembagaId"
-        required
-        action="/action_page.php"
-      />
-      <label class="form-check-label" for="inlineRadio2">{{lembaga.lembagaName}}</label>
-    </div>
-  </div> 
-  <div>
-    <div
-      class="form-check form-check-inline"
-      v-for="category in categorys"
-      :key="category.CategoryId"
-    >
-      <input
-        class="form-check-input"
-        type="radio"
-        name="category"
-        id="inlineRadio2"
-        :value="category.CategoryId"
-        v-model="event.CategoryId"
-        required
-        action="/action_page.php"
-      />
-      <label class="form-check-label" for="inlineRadio2">{{
-        category.categoryName
-      }}</label>
-    </div>
-  </div>
+<div class="form-input" v-on:submit.prevent>
   <div class="mb-3">
       <label for="formGroupExampleInput" class="form-label">Nama Lembaga</label>
       <input
@@ -157,22 +117,19 @@
       ></textarea>
     </div>
     <button type="button" class="btn btn-primary"   required
-        action="/action_page.php" @click="events">Simpan</button>
+        action="/action_page.php" @click="Events">Simpan</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
-  name: "input-post",
+    name: 'form-put',
 
-  data() {
-    return {
-      Image:null,
-      categorys: {},
-      lembagas:{},
-      
-      event: {
+    data(){
+    return{
+        events:{},
+        event: {
            lembagaId:null,
            CategoryId:null,
            nameEvent:null,
@@ -184,22 +141,18 @@ export default {
            tempat:null,
            deskripsi:null,
       },
-    };
-  },
-  methods: {
-    setLembaga(data){
-      this.lembagas=data;
+    }
+   
     },
-     setCategory(data) {
-      this.categorys = data;
-    },
-    onImageselect(image){
+    methods:{
+        setEvent(data){
+            this.events=data;
+        },
+         onImageselect(image){
       this.Image= image.target.files[0]
     },
-    events(e) {
-      if(this.Image && 
-    this.event.lembagaId &&
-    this.event.CategoryId &&
+    Events(e) {
+    if(this.Image && 
     this.event.nameEvent && 
     this.event.lembagaName && 
     this.event.tanggal &&
@@ -211,8 +164,6 @@ export default {
     !=null ){
       let fd = new FormData();
       fd.append('Image', this.Image);
-      fd.append('lembagaId', this.event.lembagaId)
-      fd.append('CategoryId', this.event.CategoryId)
       fd.append('nameEvent', this.event.nameEvent)
       fd.append('lembagaName', this.event.lembagaName)
       fd.append('link_pendaftaran', this.event.link_pendaftaran)
@@ -221,34 +172,29 @@ export default {
       fd.append('waktu', this.event.waktu)
       fd.append('tempat', this.event.tempat)
       fd.append('deskripsi', this.event.deskripsi)
-      
-      axios.post("http://localhost:3000/events", fd,  {
+     
+      axios.put("http://localhost:3000/events/"+this.$route.params.eventId, fd,  {
               headers: {
                   "Content-Type": "multipart/form-data",
         },
       })
-      }else{
+    }else{
         alert("data tdak boleh kosong")
     }
       console.warn(this.event)
       e.preventDefault();
     }
-  },
-  mounted(){
-    axios
-    .get("http://localhost:3000/lembaga")
-    .then((response)=> this.setLembaga(response.data))
-    .catch((error)=> console.log(error));
-    
-     axios
-      .get("http://localhost:3000/category")
-      .then((response) => this.setCategory(response.data))
-      .catch((error) => console.log(error));
-  }
-  
-  
-};
+    },
+    mounted(){
+        axios
+        .get("http://localhost:3000/events/" )
+        .then((response)=> this.setEvent(response.data))
+        .catch((error)=>console.log(error));
+        console.warn(this.events);
+    },
+}
 </script>
 
 <style>
+
 </style>

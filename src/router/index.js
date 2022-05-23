@@ -59,7 +59,7 @@ const routes = [
     component:postLembaga
   },
   {
-    path:'/detailevent',
+    path:'/detailevent/eventId',
     name: 'detailevent',
     component:detailEvent
   },

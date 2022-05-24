@@ -275,6 +275,7 @@ nav {
   .color-delete{
     background-color: #F22F14;
   }
+
   .text-action{
     font-size: 20px;
     font-weight: bold;
@@ -374,6 +375,34 @@ color: black;
   text-align: justify;
   width: 90%;
 }
+/* login */
+.divider:after,
+.divider:before {
+content: "";
+flex: 1;
+height: 1px;
+background: #eee;
+}
+.color-login{
+  background-color:#082A5A;
+  color: white;
+}
+.login-body{
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  box-sizing: border-box;
+}
+.login-padding{
+  padding: 30px;
+}
+.h-custom {
+height: calc(100% - 73px);
+}
+@media (max-width: 450px) {
+.h-custom {
+height: 100%;
+}
+}
 @media screen and (min-width: 700px){
     .Hero {
         display: grid;
@@ -403,7 +432,6 @@ color: black;
     width: 90%;
     margin: 30px auto;
   }
-    
 }
 @media screen and ( max-width: 699px){
     .Hero h1{

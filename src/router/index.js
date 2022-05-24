@@ -11,6 +11,7 @@ import inputPostView from '../views/inputPost.vue'
 import postLembaga from '../views/post-lembaga.vue'
 import detailEvent from '../views/eventdetail.vue'
 import formput from '../views/fromPutLembaga.vue'
+import loginadmin from '../views/login.vue'
 
 Vue.use(VueRouter)
 
@@ -69,6 +70,11 @@ const routes = [
     path:'/putevent/:eventId',
     name: 'putevent',
     component:formput
+  },
+  {
+    path:'/login',
+    name: 'login-admin',
+    component:loginadmin
   },
 
 ]
